@@ -1,0 +1,23 @@
+./find --help
+./find . -name "pred.c"
+./find . -name "testfile.txt"    
+./find . -size +1M -type f       
+./find . -mtime -10000 
+./find . -type f -size -500k 
+./find . -maxdepth 2 -name "*.py"
+./find . -type f -newermt "2017-01-01" 
+./find . -type f -not -user $(whoami)     
+./find . -type f -mmin -10;   
+./find . -type f -regex ".*\(\.py\|\.sh\)$" 
+./find . -type f -iname "*.pdf" -exec chmod 644 {} \; 
+./find . -type f -mmin -5 -exec echo "Recently modified files: {}" \;
+<40개>
+./find . -type f -perm /u=x -print 
+./find . -type f -size +1G -printf "%p %s\n" 
+<위에 50개>
+./find /nonexistentpath -name "*.txt"
+./find . -type f -delete
+/find . -type d -exec rmdir {} +
+./find . -type f -mtime +365 -exec backup {} \;
+
+
