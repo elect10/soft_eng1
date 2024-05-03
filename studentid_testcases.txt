@@ -1,6 +1,5 @@
 ./find --help
-./find . -name "pred.c"
-./find . -name "testfile.txt"    
+./find . -name "pred.c" 
 ./find . -size +1M -type f       
 ./find . -mtime -10000 
 ./find . -type f -size -500k 
@@ -10,8 +9,25 @@
 ./find . -type f -mmin -10;   
 ./find . -type f -regex ".*\(\.py\|\.sh\)$" 
 ./find . -type f -iname "*.pdf" -exec chmod 644 {} \; 
-./find . -type f -mmin -5 -exec echo "Recently modified files: {}" \;
 ./find . -type f -perm /u=x -print 
 ./find . -type f -size +1G -printf "%p %s\n" 
 ./find /nonexistentpath -name "*.txt"
+./find . -type l -follow -print  # 심볼릭 링크를 따라가며 파일 및 디렉토리 찾기
+./find . -name "testfile.txt" -exec cat {} \;
+./find . -name "testfile.txt" -execdir cat {} \;
+./find . -type f -mmin -5
+./find . -type f -name "testfile.txt" -exec echo "Found file: {}" \;
+./find . -type f -mmin -5 -exec echo "Recently modified files: {}" \;
+./find . -type f -regex ".*\(\.py\|\.sh\)$"
+./find . -type f -iregex ".*\.txt$"
+./find . -type f -regex ".*/test.*"
+./find . -type f -iregex ".*/test.*"
+./find . -type d -name "*test*" -prune -o -print
+
+
+
+
+
+
+
 
