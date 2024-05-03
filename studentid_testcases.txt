@@ -24,9 +24,12 @@
 ./find . -type f -iregex ".*/test.*"
 ./find . -type d -name "*test*" -prune -o -print
 
+./find . -type f -user someuser
+./find . -type f -group somegroup
+./find . -type f -perm 644
 
-
-
+./find . -type f -newermt "2023-01-01" ! -newermt "2023-12-31"
+./find . -type f -name "*.jpg"
 
 
 
