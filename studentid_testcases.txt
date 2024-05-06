@@ -15,22 +15,19 @@
 ./find . -type l -follow -print  # 심볼릭 링크를 따라가며 파일 및 디렉토리 찾기
 ./find . -name "testfile.txt" -exec cat {} \;
 ./find . -name "testfile.txt" -execdir cat {} \;
-./find . -type f -mmin -5
+./find . -type f -mmin -5 
 ./find . -type f -name "testfile.txt" -exec echo "Found file: {}" \;
 ./find . -type f -mmin -5 -exec echo "Recently modified files: {}" \;
 ./find . -type f -regex ".*\(\.py\|\.sh\)$"
 ./find . -type f -iregex ".*\.txt$"
-./find . -type f -regex ".*/test.*"
+./find . -type f \( -regex ".*/test.*" -o -regex ".*/anotherpattern.*" -o regex ".*/testing" -o regex "./testing*"\)
 ./find . -type f -iregex ".*/test.*"
 ./find . -type d -name "*test*" -prune -o -print
-
 ./find . -type f -user someuser
 ./find . -type f -group somegroup
 ./find . -type f -perm 644
-
 ./find . -type f -newermt "2023-01-01" ! -newermt "2023-12-31"
 ./find . -type f -name "*.jpg"
-
-
+./find /usr -noleaf -perm -444 -perm /222 ! -perm /111
 
 
