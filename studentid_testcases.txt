@@ -4,9 +4,9 @@
 ./find . -mtime -10000 
 ./find . -type f -size -500k 
 ./find . -maxdepth 2 -name "*.py"
-./find . -type f -newermt "2017-01-01" 
+./find . -maxdepth 1 -size +10M -type f
+./find . -type f -newermt "2017-01-01" not -newermt "2021-01-02" 
 ./find . -type f -not -user $(whoami)     
-./find . -type f -mmin -10;   
 ./find . -type f -regex ".*\(\.py\|\.sh\)$" 
 ./find . -type f -iname "*.pdf" -exec chmod 644 {} \; 
 ./find . -type f -perm /u=x -print 
@@ -18,16 +18,13 @@
 ./find . -type f -mmin -5 
 ./find . -type f -name "testfile.txt" -exec echo "Found file: {}" \;
 ./find . -type f -mmin -5 -exec echo "Recently modified files: {}" \;
-./find . -type f -regex ".*\(\.py\|\.sh\)$"
-./find . -type f -iregex ".*\.txt$"
+./find . -type f -regex ".*\(\.py\|\.sh\)$" -o ".\(\.c\|\.sh\)*$"
+./find . -type f -iregex ".*\.txt$" -o ".*\.c$"
 ./find . -type f \( -regex ".*/test.*" -o -regex ".*/anotherpattern.*" -o regex ".*/testing" -o regex "./testing*"\)
 ./find . -type f -iregex ".*/test.*"
 ./find . -type d -name "*test*" -prune -o -print
-./find . -type f -user someuser
-./find . -type f -group somegroup
-./find . -type f -perm 644
-./find . -type f -newermt "2023-01-01" ! -newermt "2023-12-31"
-./find . -type f -name "*.jpg"
-./find /usr -noleaf -perm -444 -perm /222 ! -perm /111
-
-
+./find . -type f -user someuser -o group somegroup
+./find . -type f -perm 644 -o -perm 444 -o -perm 222 -o -perm 111  -mmin -10
+./find . -type f -name "*.jpg" -o "*.png"
+./find /usr/lib -noleaf -perm -444 -perm /222 ! -perm /111
+./find . -type f -perm -u=w,g=r,o=x
